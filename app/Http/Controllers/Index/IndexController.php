@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Goods;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
+
 class IndexController extends Controller
 {
     // 首页
@@ -28,9 +29,11 @@ class IndexController extends Controller
        $slide=unserialize($slide);
        $aaa=0;
        $aaa=Redis::incr($aaa);
+       $goods=Goods::select('goods_price','goods_name','goods_id','goods_img')->get();
+       //dd($goods);
        //dd($aaa);
        //dd($slide);
-        return view("index.index",['slide'=>$slide]);
+        return view("index.index",['slide'=>$slide,'goods'=>$goods]);
     }
    
 }

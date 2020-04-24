@@ -17,6 +17,7 @@ class GoodsController extends Controller
     public function index()
     {
         //
+        echo 12;
         $goods_name=request()->goods_name;
         $where=[];
         if($goods_name){
